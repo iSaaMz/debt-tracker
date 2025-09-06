@@ -57,7 +57,7 @@ export function DebtSummary({ debts, loading }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {/* Dette de Nanou envers Amina */}
-        <Card className={nanouOwesAmina > 0 ? "border-red-200 bg-red-50" : "border-green-200 bg-green-50"}>
+        <Card className={nanouOwesAmina > 0 ? "border-red-200 bg-red-50" : "border-blue-200 bg-blue-50"}>
           <CardHeader className="pb-2 sm:pb-3">
             <CardTitle className="text-sm sm:text-base lg:text-lg flex items-center justify-between">
               <span className="truncate pr-2">
@@ -73,18 +73,18 @@ export function DebtSummary({ debts, loading }) {
           </CardHeader>
           <CardContent className="pt-0">
             <div className="text-xl sm:text-2xl lg:text-3xl font-bold">
-              <span className={nanouOwesAmina > 0 ? "text-red-600" : "text-green-600"}>
+              <span className={nanouOwesAmina > 0 ? "text-red-600" : "text-blue-600"}>
                 {formatAmount(nanouOwesAmina)}
               </span>
             </div>
             {nanouOwesAmina === 0 && (
-              <p className="text-xs sm:text-sm text-green-600 mt-1">Aucune dette</p>
+              <p className="text-xs sm:text-sm text-blue-600 mt-1">Aucune dette</p>
             )}
           </CardContent>
         </Card>
 
         {/* Dette d'Amina envers Nanou */}
-        <Card className={aminaOwesNanou > 0 ? "border-red-200 bg-red-50" : "border-green-200 bg-green-50"}>
+        <Card className={aminaOwesNanou > 0 ? "border-red-200 bg-red-50" : "border-blue-200 bg-blue-50"}>
           <CardHeader className="pb-2 sm:pb-3">
             <CardTitle className="text-sm sm:text-base lg:text-lg flex items-center justify-between">
               <span className="truncate pr-2">
@@ -100,12 +100,12 @@ export function DebtSummary({ debts, loading }) {
           </CardHeader>
           <CardContent className="pt-0">
             <div className="text-xl sm:text-2xl lg:text-3xl font-bold">
-              <span className={aminaOwesNanou > 0 ? "text-red-600" : "text-green-600"}>
+              <span className={aminaOwesNanou > 0 ? "text-red-600" : "text-blue-600"}>
                 {formatAmount(aminaOwesNanou)}
               </span>
             </div>
             {aminaOwesNanou === 0 && (
-              <p className="text-xs sm:text-sm text-green-600 mt-1">Aucune dette</p>
+              <p className="text-xs sm:text-sm text-blue-600 mt-1">Aucune dette</p>
             )}
           </CardContent>
         </Card>
