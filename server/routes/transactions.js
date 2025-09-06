@@ -1,5 +1,6 @@
 import express from 'express';
 import { Transaction } from '../models/Transaction.js';
+import { authenticateToken } from './auth.js';
 
 const router = express.Router();
 
@@ -38,8 +39,8 @@ const validateTransaction = (req, res, next) => {
   next();
 };
 
-// GET /api/transactions - Récupérer toutes les transactions
-router.get('/', async (req, res, next) => {
+// GET /api/transactions - Récupérer toutes les transactions (protected)
+router.get('/', authenticateToken, async (req, res, next) => {
   try {
     const transactions = await Transaction.findAll();
     res.json({
@@ -51,8 +52,8 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// POST /api/transactions - Créer une nouvelle transaction
-router.post('/', validateTransaction, async (req, res, next) => {
+// POST /api/transactions - Créer une nouvelle transaction (protected)
+router.post('/', authenticateToken, validateTransaction, async (req, res, next) => {
   try {
     const { payer, amount, description } = req.body;
     
@@ -72,8 +73,8 @@ router.post('/', validateTransaction, async (req, res, next) => {
   }
 });
 
-// PUT /api/transactions/:id/pay - Marquer une transaction comme payée
-router.put('/:id/pay', async (req, res, next) => {
+// PUT /api/transactions/:id/pay - Marquer une transaction comme payée (protected)
+router.put('/:id/pay', authenticateToken, async (req, res, next) => {
   try {
     const { id } = req.params;
     
@@ -103,8 +104,8 @@ router.put('/:id/pay', async (req, res, next) => {
   }
 });
 
-// GET /api/transactions/debts - Calculer les dettes
-router.get('/debts', async (req, res, next) => {
+// GET /api/transactions/debts - Calculer les dettes (protected)
+router.get('/debts', authenticateToken, async (req, res, next) => {
   try {
     const debts = await Transaction.getDebts();
     res.json({
@@ -116,8 +117,8 @@ router.get('/debts', async (req, res, next) => {
   }
 });
 
-// DELETE /api/transactions/:id - Supprimer une transaction
-router.delete('/:id', async (req, res, next) => {
+// DELETE /api/transactions/:id - Supprimer une transaction (protected)
+router.delete('/:id', authenticateToken, async (req, res, next) => {
   try {
     const { id } = req.params;
     

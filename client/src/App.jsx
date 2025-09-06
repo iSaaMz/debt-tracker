@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useAuth } from './hooks/useAuth.jsx';
 import { useTransactions } from './hooks/useTransactions';
+import { AuthForm } from './components/AuthForm';
 import { AddTransactionForm } from './components/AddTransactionForm';
 import { DebtSummary } from './components/DebtSummary';
 import { TransactionHistory } from './components/TransactionHistory';
@@ -7,9 +9,10 @@ import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { Alert, AlertDescription } from './components/ui/alert';
 import { Button } from './components/ui/button';
 import { Separator } from './components/ui/separator';
-import { AlertCircle, RefreshCw, PiggyBank } from 'lucide-react';
+import { AlertCircle, RefreshCw, PiggyBank, LogOut } from 'lucide-react';
 
 function App() {
+  const { user, loading: authLoading, login, logout, isAuthenticated } = useAuth();
   const {
     transactions,
     debts,
@@ -22,6 +25,19 @@ function App() {
   } = useTransactions();
 
   const [showAddForm, setShowAddForm] = useState(false);
+
+  // Show auth form if not authenticated
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <AuthForm onLogin={login} />;
+  }
 
   const handleAddTransaction = async (transactionData) => {
     await addTransaction(transactionData);
@@ -62,7 +78,7 @@ function App() {
                   Debt Tracker
                 </h1>
                 <p className="text-xs sm:text-sm text-muted-foreground hidden xs:block">
-                  Suivi des dettes entre Amina et Nanou
+                  Connecté en tant que <span className="font-medium">{user?.name}</span>
                 </p>
               </div>
             </div>
@@ -79,6 +95,15 @@ function App() {
                 <span className="sm:hidden">
                   {showAddForm ? 'Masquer' : 'Nouveau'}
                 </span>
+              </Button>
+              <Button
+                onClick={logout}
+                variant="outline"
+                size="sm"
+                className="text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2"
+              >
+                <LogOut className="h-4 w-4 sm:mr-2" />
+                <span className="hidden sm:inline">Déconnexion</span>
               </Button>
             </div>
           </div>

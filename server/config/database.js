@@ -25,6 +25,18 @@ pool.on('error', (err) => {
 // Initialize database schema
 export async function initializeDatabase() {
   try {
+    // Create users table for authentication
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(50) NOT NULL CHECK (name IN ('Amina', 'Nanou')),
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+
+    // Create transactions table
     await pool.query(`
       CREATE TABLE IF NOT EXISTS transactions (
         id SERIAL PRIMARY KEY,
@@ -35,6 +47,15 @@ export async function initializeDatabase() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         paid_at TIMESTAMP NULL
       );
+    `);
+
+    // Insert default users if they don't exist
+    await pool.query(`
+      INSERT INTO users (name, email, password) 
+      VALUES 
+        ('Amina', 'amina@example.com', '$2b$10$placeholder'),
+        ('Nanou', 'nanou@example.com', '$2b$10$placeholder')
+      ON CONFLICT (email) DO NOTHING;
     `);
 
     console.log('✅ Database schema initialized');

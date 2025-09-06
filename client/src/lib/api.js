@@ -3,20 +3,34 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 class ApiClient {
   async request(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
+    
+    // Get auth token from localStorage
+    const token = localStorage.getItem('auth_token');
+    
     const config = {
       headers: {
         'Content-Type': 'application/json',
+        ...(token && { Authorization: `Bearer ${token}` }),
         ...options.headers,
       },
+      credentials: 'include',
       ...options,
     };
 
     try {
       const response = await fetch(url, config);
+      
+      // Handle authentication errors
+      if (response.status === 401 || response.status === 403) {
+        localStorage.removeItem('auth_token');
+        // Don't reload immediately, let the auth context handle it
+        throw new Error('Session expirée, veuillez vous reconnecter');
+      }
+      
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Une erreur est survenue');
+        throw new Error(data.error || data.message || 'Une erreur est survenue');
       }
 
       return data;
