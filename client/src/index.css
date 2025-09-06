@@ -147,39 +147,39 @@
   --sidebar-ring: oklch(0.6 0.2 300);
 }
 
-/* Amina Mode - Rose, Bleu, Violet Pastel */
+/* Amina Mode - EXPLOSION DE COULEURS ! 💥 */
 .amina {
-  --background: oklch(0.98 0.02 310);
-  --foreground: oklch(0.15 0.05 250);
-  --card: oklch(0.95 0.04 310);
-  --card-foreground: oklch(0.2 0.08 250);
-  --popover: oklch(0.95 0.04 310);
-  --popover-foreground: oklch(0.2 0.08 250);
-  --primary: oklch(0.6 0.18 260); /* Bleu */
-  --primary-foreground: oklch(0.98 0.02 260);
-  --secondary: oklch(0.85 0.12 320); /* Rose pastel */
-  --secondary-foreground: oklch(0.2 0.08 320);
-  --muted: oklch(0.9 0.06 290);
-  --muted-foreground: oklch(0.5 0.1 270);
-  --accent: oklch(0.75 0.15 280); /* Violet pastel */
-  --accent-foreground: oklch(0.2 0.05 280);
-  --destructive: oklch(0.65 0.25 15);
-  --border: oklch(0.85 0.08 300);
-  --input: oklch(0.9 0.04 300);
-  --ring: oklch(0.65 0.15 270);
-  --chart-1: oklch(0.6 0.18 260);
-  --chart-2: oklch(0.75 0.15 280);
-  --chart-3: oklch(0.8 0.12 320);
-  --chart-4: oklch(0.55 0.2 240);
-  --chart-5: oklch(0.7 0.14 300);
-  --sidebar: oklch(0.95 0.04 310);
-  --sidebar-foreground: oklch(0.2 0.08 250);
-  --sidebar-primary: oklch(0.6 0.18 260);
-  --sidebar-primary-foreground: oklch(0.98 0.02 260);
-  --sidebar-accent: oklch(0.85 0.12 320);
-  --sidebar-accent-foreground: oklch(0.2 0.08 320);
-  --sidebar-border: oklch(0.85 0.08 300);
-  --sidebar-ring: oklch(0.65 0.15 270);
+  --background: oklch(0.95 0.08 320); /* Fond rose qui tape ! */
+  --foreground: oklch(0.12 0.15 260); /* Texte bleu intense */
+  --card: oklch(0.92 0.12 315); /* Cartes rose vif */
+  --card-foreground: oklch(0.15 0.18 265); /* Texte bleu saturé */
+  --popover: oklch(0.92 0.12 315);
+  --popover-foreground: oklch(0.15 0.18 265);
+  --primary: oklch(0.5 0.45 255); /* BLEU ÉLECTRIQUE ! */
+  --primary-foreground: oklch(0.98 0.02 255);
+  --secondary: oklch(0.72 0.35 340); /* ROSE FLASHY ! */
+  --secondary-foreground: oklch(0.12 0.2 340);
+  --muted: oklch(0.85 0.18 305); /* Même le fond atténué claque ! */
+  --muted-foreground: oklch(0.4 0.25 280); /* Violet intense */
+  --accent: oklch(0.62 0.38 290); /* VIOLET QUI DÉFONCE ! */
+  --accent-foreground: oklch(0.98 0.02 290);
+  --destructive: oklch(0.65 0.35 15); /* Rouge plus intense */
+  --border: oklch(0.78 0.22 315); /* Bordures rose-violet intenses */
+  --input: oklch(0.85 0.15 315); /* Champs colorés */
+  --ring: oklch(0.55 0.35 280); /* Focus violet électrique */
+  --chart-1: oklch(0.5 0.45 255); /* Bleu électrique */
+  --chart-2: oklch(0.62 0.38 290); /* Violet explosif */
+  --chart-3: oklch(0.7 0.35 340); /* Rose flashy */
+  --chart-4: oklch(0.48 0.4 240); /* Bleu profond intense */
+  --chart-5: oklch(0.6 0.32 310); /* Rose-violet saturé */
+  --sidebar: oklch(0.92 0.12 315);
+  --sidebar-foreground: oklch(0.15 0.18 265);
+  --sidebar-primary: oklch(0.5 0.45 255); /* Bleu électrique */
+  --sidebar-primary-foreground: oklch(0.98 0.02 255);
+  --sidebar-accent: oklch(0.72 0.35 340); /* Rose flashy */
+  --sidebar-accent-foreground: oklch(0.12 0.2 340);
+  --sidebar-border: oklch(0.78 0.22 315);
+  --sidebar-ring: oklch(0.55 0.35 280);
 }
 
 /* Utility classes for mobile breakpoints */
