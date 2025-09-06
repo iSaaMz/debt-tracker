@@ -52,27 +52,33 @@ function App() {
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
       {/* Header */}
-      <header className="bg-card border-b border-border transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-4 py-6">
+      <header className="bg-card border-b border-border transition-colors duration-300 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 py-4 sm:py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <PiggyBank className="h-8 w-8 text-primary" />
-              <div>
-                <h1 className="text-3xl font-bold text-foreground">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+              <PiggyBank className="h-6 w-6 sm:h-8 sm:w-8 text-primary flex-shrink-0" />
+              <div className="min-w-0 flex-1">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground truncate">
                   Debt Tracker
                 </h1>
-                <p className="text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground hidden xs:block">
                   Suivi des dettes entre Amina et Nanou
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <ThemeSwitcher />
               <Button
                 onClick={() => setShowAddForm(!showAddForm)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-xs sm:text-sm px-2 sm:px-4 py-1.5 sm:py-2"
+                size="sm"
               >
-                {showAddForm ? 'Masquer le formulaire' : 'Nouvelle dépense'}
+                <span className="hidden sm:inline">
+                  {showAddForm ? 'Masquer le formulaire' : 'Nouvelle dépense'}
+                </span>
+                <span className="sm:hidden">
+                  {showAddForm ? 'Masquer' : 'Nouveau'}
+                </span>
               </Button>
             </div>
           </div>
@@ -80,8 +86,8 @@ function App() {
       </header>
 
       {/* Main content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="space-y-8">
+      <main className="max-w-6xl mx-auto px-4 py-4 sm:py-6 lg:py-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Résumé des dettes */}
           <section>
             <DebtSummary debts={debts} loading={loading} />

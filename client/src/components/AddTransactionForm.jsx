@@ -57,22 +57,23 @@ export function AddTransactionForm({ onAddTransaction, loading }) {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <PlusCircle className="h-5 w-5" />
-          Ajouter une nouvelle dépense
+      <CardHeader className="pb-3 sm:pb-6">
+        <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+          <PlusCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="hidden xs:inline">Ajouter une nouvelle dépense</span>
+          <span className="xs:hidden">Nouvelle dépense</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="payer">Qui a payé ?</Label>
+              <Label htmlFor="payer" className="text-sm font-medium">Qui a payé ?</Label>
               <Select
                 value={formData.payer}
                 onValueChange={(value) => handleInputChange('payer', value)}
               >
-                <SelectTrigger>
+                <SelectTrigger className="h-11">
                   <SelectValue placeholder="Sélectionner..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -83,7 +84,7 @@ export function AddTransactionForm({ onAddTransaction, loading }) {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="amount">Montant (€)</Label>
+              <Label htmlFor="amount" className="text-sm font-medium">Montant (€)</Label>
               <Input
                 id="amount"
                 type="number"
@@ -92,25 +93,28 @@ export function AddTransactionForm({ onAddTransaction, loading }) {
                 value={formData.amount}
                 onChange={(e) => handleInputChange('amount', e.target.value)}
                 min="0"
+                className="h-11 text-base"
+                inputMode="decimal"
               />
             </div>
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description" className="text-sm font-medium">Description</Label>
             <Textarea
               id="description"
               placeholder="Description de la dépense..."
               value={formData.description}
               onChange={(e) => handleInputChange('description', e.target.value)}
               rows={3}
+              className="text-base resize-none"
             />
           </div>
           
           <Button 
             type="submit" 
             disabled={isSubmitting || loading}
-            className="w-full"
+            className="w-full h-11 text-base font-medium"
           >
             {isSubmitting ? 'Ajout en cours...' : 'Ajouter la dépense'}
           </Button>

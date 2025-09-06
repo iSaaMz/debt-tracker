@@ -182,11 +182,53 @@
   --sidebar-ring: oklch(0.65 0.15 270);
 }
 
+/* Utility classes for mobile breakpoints */
+@media (max-width: 475px) {
+  .xs\:hidden {
+    display: none !important;
+  }
+  
+  .xs\:block {
+    display: block !important;
+  }
+  
+  .xs\:inline {
+    display: inline !important;
+  }
+  
+  .xs\:flex {
+    display: flex !important;
+  }
+  
+  .xs\:flex-row {
+    flex-direction: row !important;
+  }
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Touch target improvements for mobile */
+  button, select, input, textarea {
+    min-height: 44px;
+  }
+  
+  /* Smooth scrolling for mobile */
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 }

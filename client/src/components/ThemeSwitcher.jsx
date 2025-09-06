@@ -44,9 +44,9 @@ export function ThemeSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
-          <CurrentIcon className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentTheme.name}</span>
+        <Button variant="outline" size="sm" className="gap-1 sm:gap-2 px-2 sm:px-3">
+          <CurrentIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+          <span className="hidden md:inline text-xs sm:text-sm">{currentTheme.name}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
