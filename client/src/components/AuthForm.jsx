@@ -159,11 +159,31 @@ export function AuthForm({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-background px-4 relative overflow-hidden">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/assets/papier.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Background Image Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center z-10 opacity-30"
+        style={{ backgroundImage: 'url(/assets/vie.jpg)' }}
+      />
+      
+      {/* Dark Overlay for Better Text Readability */}
+      <div className="absolute inset-0 bg-black/40 z-20" />
+      
+      <Card className="w-full max-w-md relative z-30 bg-white/95 backdrop-blur-sm border-white/20 shadow-2xl">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl text-center">Debt Tracker</CardTitle>
-          <CardDescription className="text-center">
+          <CardTitle className="text-2xl text-center text-gray-900">Debt Tracker</CardTitle>
+          <CardDescription className="text-center text-gray-700">
             Suivi des dettes entre Amina et Nanou
           </CardDescription>
         </CardHeader>
