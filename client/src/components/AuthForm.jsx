@@ -355,6 +355,15 @@ export function AuthForm({ onLogin }) {
             </TabsContent>
           </Tabs>
         </CardContent>
+        
+        {/* Sponsorship Message */}
+        <div className="pb-6 px-6">
+          <div className="text-center">
+            <p className="text-lg font-bold text-transparent bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text animate-pulse">
+              Sponsorisé par Emi ❤️
+            </p>
+          </div>
+        </div>
       </Card>
     </div>
   );
